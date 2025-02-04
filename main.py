@@ -1,6 +1,4 @@
-def print_hi(name):
-    print(f'Hi, {name}')
+from menu import main_menu
 
-
-if __name__ == '__main__':
-    print_hi('PyCharm')
+if __name__ == "__main__":
+    main_menu()
