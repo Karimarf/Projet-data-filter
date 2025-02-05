@@ -1,0 +1,16 @@
+[
+    {
+        "prenon": "Fred",
+        "nom": "Zhuang",
+        "age": 20,
+        "description": "Pro sur league of legends",
+        "note": [20,20,20]
+    },
+    {
+        "prenon": "Franck",
+        "nom": "Lee",
+        "age": 20,
+        "description": "Pro du badminton",
+        "note": [19,19,19]
+    }
+]

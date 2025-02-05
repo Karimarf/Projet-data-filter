@@ -1,3 +1,5 @@
+from ChargerDonnées.loaderMenu import load_data_menu
+
 def show_menu():
     print("\n--- MENU ---")
     print("1. Charger des données")
@@ -15,6 +17,7 @@ def main_menu():
 
         if menu == "1":
             print("Option 1: Charger des données")
+            load_data_menu()
             pass
         elif menu == "2":
             print("Option 2: Sauvegarder des données")
