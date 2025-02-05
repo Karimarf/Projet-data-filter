@@ -1,4 +1,3 @@
-from ChargerDonnées.csv_loader import get_dynamic_instances
 from ChargerDonnées.loaderMenu import load_data_menu
 
 def show_menu():
@@ -30,7 +29,6 @@ def main_menu():
             pass
         elif menu == "5":
             print("Au revoir!")
-            print(get_dynamic_instances())
             break
         else:
             print("Un nombre valide !!!!!")

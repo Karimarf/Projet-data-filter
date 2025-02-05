@@ -1,7 +1,6 @@
 import csv
 from typing import List, Optional
-
-dynamic_instances = []
+from data_manager import DataManager
 
 
 class ClassBuilder:
@@ -11,7 +10,6 @@ class ClassBuilder:
 
     @classmethod
     def create_class(cls, class_name: str, attributes_name: List[str]) -> object:
-
         def __init__(self, *args):
             if len(args) != len(self.__class__.attributes):
                 raise ValueError(
@@ -26,17 +24,21 @@ class ClassBuilder:
             for attr, value in vars(self).items():
                 print(f"  - {attr}: {value}")
 
-        new_class = cls.build_attributes(attributes_name=attributes_name)
+        def __repr__(self):
+            attributes = ", ".join(f"{attr}={repr(value)}" for attr, value in vars(self).items())
+            return f"{self.__class__.__name__}({attributes})"
 
+        new_class = cls.build_attributes(attributes_name=attributes_name)
         new_class["__init__"] = __init__
         new_class["print_class"] = print_class
+        new_class["__repr__"] = __repr__
         new_class["attributes"] = attributes_name
 
         return type(class_name, (object,), new_class)
 
 
+
 def load_csv(file_path: str):
-    global dynamic_instances
     with open(file_path, mode="r", newline='', encoding="utf-8") as file:
         reader = csv.DictReader(file)
         headers = reader.fieldnames
@@ -44,16 +46,12 @@ def load_csv(file_path: str):
         class_name = "DynamicClass"
         DynamicClass = ClassBuilder.create_class(class_name, headers)
 
-        dynamic_instances = [
+        csv_instances = [
             DynamicClass(*[row[header] for header in headers]) for row in reader
         ]
 
+        DataManager.add_instances(csv_instances)
+
         print(f"Données CSV chargées et instances créées :")
-        for instance in dynamic_instances:
+        for instance in csv_instances:
             instance.print_class()
-
-        return dynamic_instances
-
-
-def get_dynamic_instances():
-    return dynamic_instances
