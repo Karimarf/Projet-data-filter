@@ -9,24 +9,25 @@ def load_data_menu():
         print("2. Charger depuis un fichier JSON")
         print("3. Charger depuis un fichier XML")
         print("4. Charger depuis un fichier YAML")
-        print("q. Retour au menu principal")
+        print("5. Charger toutes les données")
+        print("6. Retour au menu principal")
 
         menu = input("Choisissez une option: ")
 
         if menu == "1":
-            print("Chargement depuis un fichier CSV...")
+            print("\nCSV :")
             data = load_csv("./data/data.csv")
         elif menu == "2":
-            print("Chargement depuis un fichier JSON...")
+            print("\nJSON :")
             data = load_json("./data/data.json")
         elif menu == "3":
-            print("Chargement depuis un fichier XML...")
-            # Appeler une fonction de chargement XML
+            print("\nXML :")
         elif menu == "4":
-            print("Chargement depuis un fichier YAML...")
-            # Appeler une fonction de chargement YAML
+            print("\nYAML :")
         elif menu == "5":
-            print("Retour au menu principal.")
+            print("Chargement depuis tout les fichiers")
+        elif menu == "6":
+            print("Retour au menu principal")
             break
         else:
-            print("Option invalide, réessayez.")
+            print("Option invalide")
