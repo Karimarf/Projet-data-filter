@@ -1,11 +1,10 @@
 from ChargerDonnées.csv_loader import load_csv
-from data_manager import DataManager
 from ChargerDonnées.json_loader import load_json
 
 
 def load_data_menu():
     while True:
-        print("\n=== Menu de Chargement des Données ===")
+        print("\n\n\n\n\n=== Menu de Chargement des Données ===")
         print("1. Charger depuis un fichier CSV")
         print("2. Charger depuis un fichier JSON")
         print("3. Charger depuis un fichier XML")
@@ -29,8 +28,6 @@ def load_data_menu():
             print("Chargement depuis tout les fichiers")
         elif menu == "6":
             print("Retour au menu principal")
-            all_instances = DataManager.get_dynamic_instances()
-            print(all_instances)
             break
         else:
             print("Option invalide")

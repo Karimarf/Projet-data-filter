@@ -1,7 +1,9 @@
 from ChargerDonnées.loaderMenu import load_data_menu
+from Statistique.number_stat import StatsCalculator
+
 
 def show_menu():
-    print("\n--- MENU ---")
+    print("\n\n\n\n\n--------------------- MENU ---------------------")
     print("1. Charger et Sauvegarder des données")
     print("2. Afficher la structure et les statistiques")
     print("3. Filtrer les données")
@@ -19,7 +21,8 @@ def main_menu():
             load_data_menu()
             pass
         elif menu == "2":
-            print("Option 3: Afficher la structure et les statistiques")
+            print("Option 3: Afficher  les statistiques")
+            StatsCalculator.calculate_numeric_stats()
             pass
         elif menu == "3":
             print("Option 4: Filtrer les données")
