@@ -8,10 +8,10 @@ class TypeHandler:
 
     @classmethod
     def infer_types(cls, data: List[dict[str, str]]):
-        for column in data[0].keys():  # Parcourt les colonnes
+        for column in data[0].keys():
             for row in data:
                 value = row[column]
-                value_str = str(value)  # Convertir la valeur en chaîne de caractères
+                value_str = str(value)
 
                 if value_str in {"0", "1"}:
                     cls.column_types[column] = bool
@@ -23,8 +23,7 @@ class TypeHandler:
                     cls.column_types[column] = float
                 else:
                     cls.column_types[column] = str
-                break  # Une fois le type déterminé, on passe à la colonne suivante
-
+                break
     @staticmethod
     def is_float(value: str) -> bool:
         try:
@@ -35,22 +34,16 @@ class TypeHandler:
 
     @staticmethod
     def is_list(value: str) -> bool:
-        """Vérifie si une chaîne est formatée comme une liste."""
         if isinstance(value, str):
             return value.startswith("[") and value.endswith("]")
         return False
 
     @staticmethod
     def parse_list(value: str) -> List[Any]:
-        """
-        Parse une chaîne formatée comme une liste en un objet liste Python.
-        Les éléments de la liste sont convertis en leur type respectif.
-        """
-        if isinstance(value, list):  # Si la valeur est déjà une liste, on la retourne directement
+        if isinstance(value, list):
             return value
 
-        # Si ce n'est pas déjà une liste, on suppose que c'est une chaîne formatée comme une liste
-        items = value[1:-1].split(",")  # Retire les crochets et sépare les éléments
+        items = value[1:-1].split(",")
         return [TypeHandler.detect_type(item.strip()) for item in items]
 
     @classmethod
@@ -110,7 +103,7 @@ class ClassBuilder:
 
 
 def load_json(file_path: str):
-    with open(file_path, mode="r", encoding="utf-8") as file:
+    with open(file_path, mode="r") as file:
         data = json.load(file)
         TypeHandler.infer_types(data)
 

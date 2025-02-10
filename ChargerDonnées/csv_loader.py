@@ -77,9 +77,7 @@ class ClassBuilder:
                 converted_value = TypeHandler.convert(attr, value)
                 setattr(self, attr, converted_value)
 
-        def print_class(self):
-            for attr, value in vars(self).items():
-                print(f"  - {attr}: {value} ({type(value).__name__})")
+
 
         def __repr__(self):
             attributes = ", ".join(f"{attr}={repr(value)}" for attr, value in vars(self).items())
@@ -87,7 +85,6 @@ class ClassBuilder:
 
         new_class = cls.build_attributes(attributes_name=attributes_name)
         new_class["__init__"] = __init__
-        new_class["print_class"] = print_class
         new_class["__repr__"] = __repr__
         new_class["attributes"] = attributes_name
 
@@ -110,6 +107,3 @@ def load_csv(file_path: str):
         ]
 
         DataManager.add_instances(csv_instances)
-
-        for instance in csv_instances:
-            instance.print_class()
