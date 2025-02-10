@@ -10,7 +10,7 @@ class DataManager:
         return cls.dynamic_instances
 
     @classmethod
-    def show_columns_with_data(cls):
+    def get_all_instance(cls):
         if not cls.dynamic_instances:
             print("Aucune instance disponible.")
             return

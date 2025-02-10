@@ -17,22 +17,22 @@ def main_menu():
         show_menu()
         menu = input()
 
-        if menu == "1":
+        if menu == 1:
             print("Option 1: Charger des données")
             load_data_menu()
             pass
-        elif menu == "2":
+        elif menu == 2:
             print("Option 2:  Afficher la structure")
-            data_manager.DataManager.show_columns_with_data()
+            data_manager.DataManager.get_all_instance()
             pass
-        elif menu == "3":
+        elif menu == 3:
             print("Option 4: Afficher les statistiques")
             StatsCalculator.calculate_numeric_stats()
             pass
-        elif menu == "4":
+        elif menu == 4:
             print("Option 5: Trier les données")
             pass
-        elif menu == "5":
+        elif menu == 5:
             print("Au revoir!")
             break
         else:

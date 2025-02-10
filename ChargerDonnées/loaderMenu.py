@@ -13,21 +13,21 @@ def load_data_menu():
 
         menu = input("Choisissez une option: ")
 
-        if menu == "1":
+        if menu == 1:
             print("\nCSV enregistrer ")
             load_csv("./data/data.csv")
             break
-        elif menu == "2":
+        elif menu == 2:
             print("\nJSON enregistrer")
             load_json("./data/data.json")
             break
-        elif menu == "3":
+        elif menu == 3:
             print("\nXML enregistrer")
             break
-        elif menu == "4":
+        elif menu == 4:
             print("\nYAML enregistrer")
             break
-        elif menu == "5":
+        elif menu == 5:
             print("Retour au menu principal")
             break
         else:
