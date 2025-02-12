@@ -15,7 +15,6 @@ class DataManager:
             print("Aucune instance disponible.")
             return
 
-        print("Données des instances :")
         for index, instance in enumerate(cls.dynamic_instances, start=1):
             print(f"Instance {index}:")
             for column, value in vars(instance).items():
