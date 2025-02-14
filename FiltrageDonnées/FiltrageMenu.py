@@ -1,12 +1,14 @@
 import data_manager
+from FiltrageDonnées.FiltrageListe import FiltrageListe
 from FiltrageDonnées.FiltrageString import FiltrageString
 from FiltrageDonnées.FiltrageNumeric import FiltrageNumeric
+from FiltrageDonnées.FiltrageBool import FiltrageBool
 
 
 def load_filtrage_menu():
     dynamic_instances = data_manager.DataManager.get_dynamic_instances()
     if not dynamic_instances:
-        print("Aucune donnée disponible pour le filtrage.")
+        print("Aucune instance à filter.")
         return
 
     while True:
@@ -36,8 +38,10 @@ def load_filtrage_menu():
                         FiltrageString.handle_string_filter(field_name)
                     elif column_type in (int, float):
                         FiltrageNumeric.handle_numeric_filter(field_name)
-                    else:
-                        print(f"Le filtre pour le type '{column_type.__name__}' n'est pas encore implémenté.")
+                    elif column_type == list:
+                        FiltrageListe.handle_filter_list(field_name)
+                    elif column_type == bool:
+                        FiltrageBool.handle_filter_bool(field_name)
                 else:
                     print("Veuillez entrer un numéro valide.")
             except ValueError:

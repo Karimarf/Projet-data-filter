@@ -1,5 +1,6 @@
 from ChargerDonnées.csv_loader import load_csv
 from ChargerDonnées.json_loader import load_json
+from ChargerDonnées.xml_loader import load_xml
 
 
 def load_data_menu():
@@ -12,16 +13,16 @@ def load_data_menu():
         print("5. Retour au menu principal")
 
         menu = input("Choisissez une option: ")
-
         if menu == "1":
-            print("\nCSV enregistrer ")
             load_csv("./data/data.csv")
+            print("\nCSV enregistrer ")
             break
         elif menu == "2":
-            print("\nJSON enregistrer")
             load_json("./data/data.json")
+            print("\nJSON enregistrer")
             break
         elif menu == "3":
+            load_xml("./data/data.xml")
             print("\nXML enregistrer")
             break
         elif menu == "4":

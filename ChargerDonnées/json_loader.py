@@ -108,7 +108,7 @@ def load_json(file_path: str):
         TypeHandler.infer_types(data)
 
         headers = list(data[0].keys())
-        class_name = "DynamicClass"
+        class_name = "DATA"
         DynamicClass = ClassBuilder.create_class(class_name, headers)
 
         json_instances = [

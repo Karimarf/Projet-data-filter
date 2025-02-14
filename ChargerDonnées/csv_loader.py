@@ -99,7 +99,7 @@ def load_csv(file_path: str):
 
         TypeHandler.infer_types(data)
 
-        class_name = "DynamicClass"
+        class_name = "DATA"
         DynamicClass = ClassBuilder.create_class(class_name, headers)
 
         csv_instances = [

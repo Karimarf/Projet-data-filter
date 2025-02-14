@@ -9,6 +9,7 @@ class FiltrageNumeric:
         print("Options de filtre pour les nombres :")
         print("1. Recherche d'un nombre spécifique")
         print("2. Filtrer par intervalle")
+        print("3. Filtre par rapport a la moyenne")
 
         while True:
             try:
@@ -18,6 +19,9 @@ class FiltrageNumeric:
                     break
                 elif choice == 2:
                     cls._filter_by_range(field_name)
+                    break
+                elif choice == 3:
+                    cls._filter_by_moy(field_name)
                     break
                 else:
                     print("Veuillez entrer un numéro valide.")
@@ -56,3 +60,36 @@ class FiltrageNumeric:
                 print(instance)
         except ValueError:
             print("Entrée invalide. Veuillez entrer des nombres valides.")
+
+    @classmethod
+    def _filter_by_moy(cls, field_name):
+        try:
+            values = [getattr(instance, field_name) for instance in cls.dynamic_instances]
+            average = sum(values) / len(values)
+            print(f"La moyenne des valeurs est : {average:.2f}")
+
+            while True:
+                range_choice = input("Instance 'superieur' ou 'inferieur' à la moyenne : ").strip().lower()
+                if range_choice not in {"superieur", "inferieur"}:
+                    print("Veuillez entrer 'superieur' ou 'inferieur'.")
+                    continue
+
+                if range_choice == "superieur":
+                    filtered_instances = [
+                        instance for instance in cls.dynamic_instances
+                        if getattr(instance, field_name) > average
+                    ]
+                else:
+                    filtered_instances = [
+                        instance for instance in cls.dynamic_instances
+                        if getattr(instance, field_name) < average
+                    ]
+
+                print(f"Résultats ({len(filtered_instances)} trouvés) :")
+                for instance in filtered_instances:
+                    print(instance)
+                break
+        except ValueError:
+            print("Erreur : Impossible de calculer la moyenne ou de filtrer les valeurs.")
+        except Exception as e:
+            print(f"Erreur inattendue : {e}")

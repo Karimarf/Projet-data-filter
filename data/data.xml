@@ -1,0 +1,16 @@
+<root>
+    <truc>
+        <prenon>Fred</prenon>
+        <nom>Zhuang</nom>
+        <age>20</age>
+        <description>Pro sur league of legends</description>
+        <note>[20,20,20]</note>
+    </truc>
+    <truc>
+        <prenon>Franck</prenon>
+        <nom>Lee</nom>
+        <age>20</age>
+        <description>Pro du badminton</description>
+        <note>[19,19,19]</note>
+    </truc>
+</root>
