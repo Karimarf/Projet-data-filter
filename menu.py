@@ -1,5 +1,6 @@
 import data_manager
 from ChargerDonnées.loaderMenu import load_data_menu
+from FiltrageDonnées.FiltrageMenu import load_filtrage_menu
 from Statistique.number_stat import StatsCalculator
 from TriageDonnées.TriageMenu import load_triage_menu
 from data_manager import DataManager
@@ -34,6 +35,7 @@ def main_menu():
             pass
         elif menu == "4":
             print("Option 4: Filtrage des données")
+            load_filtrage_menu()
             pass
         elif menu == "5":
             print("Option 4: Triage des données")

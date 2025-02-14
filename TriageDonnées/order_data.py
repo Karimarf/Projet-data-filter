@@ -1,4 +1,8 @@
+from data_manager import DataManager
+
+
 class OrderData:
+    dynamic_instances = DataManager.get_dynamic_instances()
     @classmethod
     def sort_by_user_choice(cls):
         if not cls.dynamic_instances:
