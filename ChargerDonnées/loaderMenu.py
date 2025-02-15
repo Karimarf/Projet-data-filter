@@ -26,10 +26,10 @@ def load_data_menu():
             print("\nXML enregistrer")
             break
         elif menu == "4":
-            print("\nYAML enregistrer")
+            print("\nIl y a rien ... (pas le temps)")
             break
         elif menu == "5":
             print("Retour au menu principal")
             break
         else:
-            print("Option invalide")
+            print("Nombre invalide")

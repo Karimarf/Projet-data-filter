@@ -12,36 +12,29 @@ class FiltrageListe:
         print("3. Filtrer par rapport à une moyenne")
 
         while True:
-            try:
-                choice = int(input("Entrez votre choix : ").strip())
-                if choice == 1:
-                    cls._filter_by_list_value(field_name)
-                    break
-                elif choice == 2:
-                    cls._filter_by_list_size(field_name)
-                    break
-                elif choice == 3:
-                    cls._filter_by_list_mean(field_name)
-                    break
-                else:
-                    print("Veuillez entrer un numéro valide.")
-            except ValueError:
-                print("Entrée invalide. Veuillez entrer un numéro.")
+            choice = int(input("Entrez votre choix : ").strip())
+            if choice == 1:
+                cls._filter_by_list_value(field_name)
+                break
+            elif choice == 2:
+                cls._filter_by_list_size(field_name)
+                break
+            elif choice == 3:
+                cls._filter_by_list_mean(field_name)
+                break
+            else:
+                print("Veuillez entrer un numéro valide.")
 
     @classmethod
     def _filter_by_list_value(cls, field_name):
-        try:
-            value = input("Entrez la valeur à rechercher dans les listes : ").strip()
-            filtered_instances = [
-                instance for instance in cls.dynamic_instances
-                if value in getattr(instance, field_name)
-            ]
-
-            print(f"Résultats ({len(filtered_instances)} trouvés) :")
-            for instance in filtered_instances:
-                print(instance)
-        except Exception as e:
-            print(f"Erreur inattendue : {e}")
+        value = input("Entrez la valeur à rechercher dans les listes : ").strip()
+        filtered_instances = [
+            instance for instance in cls.dynamic_instances
+            if value in getattr(instance, field_name)
+        ]
+        print(f"Résultats ({len(filtered_instances)} trouvés) :")
+        for instance in filtered_instances:
+            print(instance)
 
     @classmethod
     def _filter_by_list_size(cls, field_name):
@@ -57,8 +50,6 @@ class FiltrageListe:
                 print(instance)
         except ValueError:
             print("Erreur : Veuillez entrer un nombre valide.")
-        except Exception as e:
-            print(f"Erreur inattendue : {e}")
 
     @classmethod
     def _filter_by_list_mean(cls, field_name):
@@ -84,5 +75,3 @@ class FiltrageListe:
                 print(instance)
         except ValueError:
             print("Erreur : Veuillez entrer une valeur ou un nombre valide.")
-        except Exception as e:
-            print(f"Erreur inattendue : {e}")

@@ -18,5 +18,5 @@ class DataManager:
         for index, instance in enumerate(cls.dynamic_instances, start=1):
             print(f"Instance {index}:")
             for column, value in vars(instance).items():
-                print(f"  {column}: {value}")
+                print(f"{column}: {value}")
             print()

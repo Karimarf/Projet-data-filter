@@ -12,21 +12,18 @@ class FiltrageNumeric:
         print("3. Filtre par rapport a la moyenne")
 
         while True:
-            try:
-                choice = int(input("Entrez votre choix : "))
-                if choice == 1:
-                    cls._filter_by_specific_value(field_name)
-                    break
-                elif choice == 2:
-                    cls._filter_by_range(field_name)
-                    break
-                elif choice == 3:
-                    cls._filter_by_moy(field_name)
-                    break
-                else:
-                    print("Veuillez entrer un numéro valide.")
-            except ValueError:
-                print("Entrée invalide. Veuillez entrer un numéro.")
+            choice = int(input("Entrez votre choix : "))
+            if choice == 1:
+                cls._filter_by_specific_value(field_name)
+                break
+            elif choice == 2:
+                cls._filter_by_range(field_name)
+                break
+            elif choice == 3:
+                cls._filter_by_moy(field_name)
+                break
+            else:
+                print("Veuillez entrer un numéro valide.")
 
     @classmethod
     def _filter_by_specific_value(cls, field_name):
@@ -91,5 +88,3 @@ class FiltrageNumeric:
                 break
         except ValueError:
             print("Erreur : Impossible de calculer la moyenne ou de filtrer les valeurs.")
-        except Exception as e:
-            print(f"Erreur inattendue : {e}")

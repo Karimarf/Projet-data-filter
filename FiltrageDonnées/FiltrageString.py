@@ -11,18 +11,15 @@ class FiltrageString:
         print("2. Rechercher un mot dans les chaînes")
 
         while True:
-            try:
-                choice = int(input("Entrez votre choix : "))
-                if choice == 1:
-                    cls._filter_by_string_length(field_name)
-                    break
-                elif choice == 2:
-                    cls._filter_by_word_search(field_name)
-                    break
-                else:
-                    print("Veuillez entrer un numéro valide.")
-            except ValueError:
-                print("Entrée invalide. Veuillez entrer un numéro.")
+            choice = int(input("Entrez votre choix : "))
+            if choice == 1:
+                cls._filter_by_string_length(field_name)
+                break
+            elif choice == 2:
+                cls._filter_by_word_search(field_name)
+                break
+            else:
+                print("Veuillez entrer un numéro valide.")
 
     @classmethod
     def _filter_by_string_length(cls, field_name):

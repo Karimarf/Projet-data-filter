@@ -16,15 +16,12 @@ class OrderData:
             print(f"{index}. {column}")
 
         while True:
-            try:
-                choice = int(input("Entrez le numéro de la colonne pour trier : ")) - 1
-                if 0 <= choice < len(columns):
-                    field_name = columns[choice]
-                    break
-                else:
-                    print("Veuillez entrer un numéro valide.")
-            except ValueError:
-                print("Entrée invalide. Veuillez entrer un numéro.")
+            choice = int(input("Entrez le numéro de la colonne pour trier : ")) - 1
+            if 0 <= choice < len(columns):
+                field_name = columns[choice]
+                break
+            else:
+                print("Veuillez entrer un numéro valide.")
 
         while True:
             order = input("Entrez 'croissant' ou 'decroissant' pour l'ordre du tri : ").strip().lower()
@@ -34,14 +31,11 @@ class OrderData:
             else:
                 print("Veuillez entrer 'croissant' ou 'decroissant'.")
 
-        try:
-            cls.dynamic_instances.sort(
-                key=lambda instance: cls._get_sort_value(getattr(instance, field_name)),
-                reverse=reverse
-            )
-            print(f"Instances triées par '{field_name}'{' (décroissant)' if reverse else ''}.")
-        except AttributeError:
-            print(f"Erreur : Le champ '{field_name}' n'existe pas dans les instances.")
+        cls.dynamic_instances.sort(
+            key=lambda instance: cls._get_sort_value(getattr(instance, field_name)),
+            reverse=reverse
+        )
+        print(f"Instances triées par '{field_name}'{' (décroissant)' if reverse else ''}.")
 
     @staticmethod
     def _get_sort_value(value):

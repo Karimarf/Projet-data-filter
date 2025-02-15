@@ -1,5 +1,4 @@
 import csv
-from typing import List, Optional, Any
 from data_manager import DataManager
 
 
@@ -7,7 +6,7 @@ class DataLoader:
     column_types = {}
 
     @classmethod
-    def infer_types(cls, data: List[dict[str, str]]):
+    def infer_types(cls, data):
         for column in data[0].keys():
             for row in data:
                 value = row[column]
@@ -24,7 +23,7 @@ class DataLoader:
                 break
 
     @staticmethod
-    def is_float(value: str) -> bool:
+    def is_float(value):
         try:
             float(value)
             return True
@@ -32,16 +31,16 @@ class DataLoader:
             return False
 
     @staticmethod
-    def is_list(value: str) -> bool:
+    def is_list(value):
         return value.startswith("[") and value.endswith("]")
 
     @staticmethod
-    def parse_list(value: str) -> List[Any]:
+    def parse_list(value):
         items = value[1:-1].split(",")
         return [DataLoader.detect_type(item.strip()) for item in items]
 
     @classmethod
-    def detect_type(cls, value: str):
+    def detect_type(cls, value):
         if value in {"0", "1"}:
             return bool(int(value))
         elif value.isdigit():
@@ -52,7 +51,7 @@ class DataLoader:
             return value
 
     @classmethod
-    def convert(cls, column: str, value: str):
+    def convert(cls, column, value):
         if column in cls.column_types:
             target_type = cls.column_types[column]
 
@@ -67,17 +66,15 @@ class DataLoader:
 
 class ClassBuilder:
     @classmethod
-    def build_attributes(cls, attributes_name: List[str]) -> dict[Optional[str], Optional[object]]:
+    def build_attributes(cls, attributes_name):
         return {attr: None for attr in attributes_name}
 
     @classmethod
-    def create_class(cls, class_name: str, attributes_name: List[str]) -> object:
+    def create_class(cls, class_name, attributes_name):
         def __init__(self, *args):
             for attr, value in zip(self.__class__.attributes, args):
                 converted_value = DataLoader.convert(attr, value)
                 setattr(self, attr, converted_value)
-
-
 
         def __repr__(self):
             attributes = ", ".join(f"{attr}={repr(value)}" for attr, value in vars(self).items())
@@ -91,7 +88,7 @@ class ClassBuilder:
         return type(class_name, (object,), new_class)
 
 
-def load_csv(file_path: str):
+def load_csv(file_path):
     with open(file_path, mode="r") as file:
         reader = csv.DictReader(file)
         data = list(reader)

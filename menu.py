@@ -3,7 +3,6 @@ from ChargerDonnées.loaderMenu import load_data_menu
 from FiltrageDonnées.FiltrageMenu import load_filtrage_menu
 from Statistique.number_stat import StatsCalculator
 from TriageDonnées.TriageMenu import load_triage_menu
-from data_manager import DataManager
 
 
 def show_menu():
