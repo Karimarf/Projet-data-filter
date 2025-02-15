@@ -1,16 +1,20 @@
 [
     {
-        "prenon": "Fred",
+        "prenom": "Fred",
         "nom": "Zhuang",
-        "age": 20,
-        "description": "Pro sur league of legends",
-        "note": [20,20,20]
+        "profession": "Pro sur league of legends",
+        "age": 19,
+        "ville": "Paris",
+        "compte_actif": true,
+        "hobbies": ["gaming", "streaming", "voyages"]
     },
     {
-        "prenon": "Franck",
+        "prenom": "Franck",
         "nom": "Lee",
-        "age": 20,
-        "description": "Pro du badminton",
-        "note": [19,19,19]
+        "profession": "Pro du badminton",
+        "age": 33,
+        "ville": "Lyon",
+        "compte_actif": false,
+        "hobbies": ["badminton", "course", "musique"]
     }
 ]

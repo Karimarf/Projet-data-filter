@@ -22,7 +22,6 @@ class DataLoader:
                     cls.column_types[column] = str
                 break
 
-    @staticmethod
     def is_float(value):
         try:
             float(value)
