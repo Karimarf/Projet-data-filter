@@ -3,7 +3,7 @@ from typing import List, Optional, Any
 from data_manager import DataManager
 
 
-class TypeHandler:
+class DataLoader:
     column_types = {}
 
     @classmethod
@@ -38,7 +38,7 @@ class TypeHandler:
     @staticmethod
     def parse_list(value: str) -> List[Any]:
         items = value[1:-1].split(",")
-        return [TypeHandler.detect_type(item.strip()) for item in items]
+        return [DataLoader.detect_type(item.strip()) for item in items]
 
     @classmethod
     def detect_type(cls, value: str):
@@ -74,7 +74,7 @@ class ClassBuilder:
     def create_class(cls, class_name: str, attributes_name: List[str]) -> object:
         def __init__(self, *args):
             for attr, value in zip(self.__class__.attributes, args):
-                converted_value = TypeHandler.convert(attr, value)
+                converted_value = DataLoader.convert(attr, value)
                 setattr(self, attr, converted_value)
 
 
@@ -92,12 +92,12 @@ class ClassBuilder:
 
 
 def load_csv(file_path: str):
-    with open(file_path, mode="r", newline='', encoding="utf-8") as file:
+    with open(file_path, mode="r") as file:
         reader = csv.DictReader(file)
         data = list(reader)
         headers = reader.fieldnames
 
-        TypeHandler.infer_types(data)
+        DataLoader.infer_types(data)
 
         class_name = "DATA"
         DynamicClass = ClassBuilder.create_class(class_name, headers)
