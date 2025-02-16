@@ -19,7 +19,7 @@ class FiltrageString:
                 cls._filter_by_word_search(field_name)
                 break
             else:
-                print("Veuillez entrer un numéro valide.")
+                print("Numero valide !!!")
 
     @classmethod
     def _filter_by_string_length(cls, field_name):

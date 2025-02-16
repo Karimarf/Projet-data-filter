@@ -86,5 +86,5 @@ class FiltrageNumeric:
                 for instance in filtered_instances:
                     print(instance)
                 break
-        except ValueError:
-            print("Erreur : Impossible de calculer la moyenne ou de filtrer les valeurs.")
+        except ValueError as e:
+            print(e)

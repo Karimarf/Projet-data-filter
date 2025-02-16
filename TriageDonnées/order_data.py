@@ -6,7 +6,7 @@ class OrderData:
     @classmethod
     def sort_by_user_choice(cls):
         if not cls.dynamic_instances:
-            print("Aucune instance à trier.")
+            print("Aucune instance à trier")
             return
 
         first_instance = cls.dynamic_instances[0]
@@ -21,7 +21,7 @@ class OrderData:
                 field_name = columns[choice]
                 break
             else:
-                print("Veuillez entrer un numéro valide.")
+                print("Numéro valide!!!")
 
         while True:
             order = input("Entrez 'croissant' ou 'decroissant' pour l'ordre du tri : ").strip().lower()

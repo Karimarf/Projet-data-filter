@@ -49,7 +49,7 @@ class FiltrageListe:
             for instance in filtered_instances:
                 print(instance)
         except ValueError:
-            print("Erreur : Veuillez entrer un nombre valide.")
+            print("Nombre valide !!!")
 
     @classmethod
     def _filter_by_list_mean(cls, field_name):
@@ -74,4 +74,4 @@ class FiltrageListe:
             for instance in filtered_instances:
                 print(instance)
         except ValueError:
-            print("Erreur : Veuillez entrer une valeur ou un nombre valide.")
+            print("Nombre valide !!!")

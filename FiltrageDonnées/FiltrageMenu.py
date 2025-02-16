@@ -45,9 +45,9 @@ def load_filtrage_menu():
                 else:
                     print("Veuillez entrer un numéro valide.")
             except ValueError:
-                print("Entrée invalide. Veuillez entrer un numéro.")
+                print("Un numéro")
         elif menu == "3":
             print("Retour au menu principal.")
             break
         else:
-            print("Veuillez entrer un numéro valide.")
+            print("Numéro valide.")
